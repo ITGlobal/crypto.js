@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NSD CryptoService Demo</title>
+  <script src="../index.js"></script>
+  <script src="index.js"></script>
+</head>
+<body>
+  <section class="demo" data-gist="create"></section>
+  <section class="demo" data-gist="types"></section>
+
+  <section class="demo" data-gist="open">
+    <label>
+      <span>#open_type_input</span>
+      <select id="open_type_input">
+        <option value="GOST">GOST</option>
+        <option value="RSA">RSA</option>
+      </select>
+    </label>
+  </section>
+
+  <section class="demo" data-gist="head"></section>
+  <section class="demo" data-gist="certs"></section>
+
+  <section id="pack" class="demo" data-gist="pack">
+    <label>
+      <span>#pack_text_input</span>
+      <input id="pack_text_input" type="text" value="hello">
+    </label>
+    <label>
+      <span>#pack_cert_input</span>
+      <input id="pack_cert_input" type="text" value="40:40:10:CE:F1:DF:E2:CD:4D:5B:0C:4B:54:33:C7:6B">
+    </label>
+  </section>
+
+  <section class="demo" data-gist="unpack">
+    <label>
+      <span>#unpack_data_input</span>
+      <textarea id="unpack_data_input"></textarea>
+    </label>
+  </section>
+
+  <section class="demo" data-gist="sign">
+    <label>
+      <span>#sign_text_input</span>
+      <input id="sign_text_input" type="text" value="hello">
+    </label>
+    <fieldset class="checkbox-group">
+      <legend>#sign_opt_</legend>
+      <label>
+        <span>pkcs7</span>
+        <input id="sign_opt_pkcs7" type="checkbox">
+      </label>
+      <label>
+        <span>detached</span>
+        <input id="sign_opt_detached" type="checkbox">
+      </label>
+      <label>
+        <span>sendCertificate</span>
+        <input id="sign_opt_sendCertificate" type="checkbox">
+      </label>
+      <label>
+        <span>sendChain</span>
+        <input id="sign_opt_sendChain" type="checkbox">
+      </label>
+    </fieldset>
+  </section>
+
+  <section class="demo" data-gist="close"></section>
+</body>
+</html>
