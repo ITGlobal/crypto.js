@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Has Object.keys?</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <style>
+        #output {
+            white-space: pre-wrap;
+            max-width: 400px;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        .result {
+            display: inline-block;
+            padding: 10px;
+        }
+        .failure {
+            background: #900;
+            color: #fff;
+        }
+        .success {
+            background: #090;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<pre id="output"></pre>
+<script>
+    $('#output')
+        .text(navigator.userAgent + '\n\n' + 'Has Object.keys? ')
+        .append($('<span class="result"></span>').addClass(Object.keys ? 'success' : 'failure').text(!!Object.keys))
+</script>
+</body>
+</html>
