@@ -32,7 +32,7 @@ export interface ISignatureApplet {
      * @param options опции подписи
      * @returns подпись
      */
-    sign(data: Blob | ICrutchBlob, options?: ISignOptions): IPromise<Blob | ICrutchBlob>;
+    sign(data: Blob | ICrutchBlob, options?: ISignOptions, signature?: Blob | ICrutchBlob): IPromise<Blob | ICrutchBlob>;
     /**
      * Возвращает сертификат подписи (голову)
      */
@@ -212,4 +212,30 @@ export interface ICrutchFile extends ICrutchBlob {
      * Имя файла
      */
     name: string;
+}
+/**
+ * Информация о версии криптосервиса
+ */
+export interface IVersionInfo {
+    /**
+     * Номер версии криптосервиса
+     */
+    version: string;
+}
+/**
+ * Информация о криптографических профилях
+ */
+export interface ICryptoProfiles {
+    /**
+     * Доступные криптографические профили RSA
+     */
+    rsa: string[];
+    /**
+     * Доступные криптографические профили ГОСТ
+     */
+    gost: string[];
+}
+export interface ICSResponse<TContent> {
+    content: TContent;
+    status: number;
 }

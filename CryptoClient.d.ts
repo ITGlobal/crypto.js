@@ -1,5 +1,6 @@
-import { ISignatureApplet, IUnpackResult, IPackOptions, IPromise, ICrutchBlob, ICrutchFile, ICertificate, ISignOptions } from './ISignatureApplet';
+import { ISignatureApplet, IUnpackResult, IPackOptions, IPromise, ICrutchBlob, ICrutchFile, ICertificate, ISignOptions, IVersionInfo, ICryptoProfiles } from './ISignatureApplet';
 export declare class CryptoClient implements ISignatureApplet {
+    private options;
     private readonly settings;
     private readonly baseUrl;
     private sessionPromise;
@@ -10,6 +11,14 @@ export declare class CryptoClient implements ISignatureApplet {
      */
     session: ICryptoSession;
     constructor(options?: ICryptoClientOptions);
+    /**
+     * Возвращает информацию о версии криптосервиса
+     */
+    getVersion(): IPromise<IVersionInfo>;
+    /**
+    * Возвращает информацию о криптографических профилях
+    */
+    getProfiles(): IPromise<ICryptoProfiles>;
     /**
      * Возвращает список установленных справочников сертификатов: 'GOST' и/или 'RSA'
      */
@@ -29,17 +38,25 @@ export declare class CryptoClient implements ISignatureApplet {
     pack(files: File[] | ICrutchFile[], options: IPackOptions): IPromise<Blob | ICrutchBlob>;
     unpack(buffer: Blob | ICrutchBlob): IPromise<IUnpackResult>;
     getCerts(): IPromise<ICertificate[]>;
-    sign(data: Blob | ICrutchBlob, options?: ISignOptions): IPromise<Blob | ICrutchBlob>;
+    sign(data: Blob | ICrutchBlob, options?: ISignOptions, signature?: Blob | ICrutchBlob): IPromise<Blob | ICrutchBlob>;
     getHeadCert(): IPromise<ICertificate>;
-    private send<T>(path, data, success?);
+    getHeadCertFor(args: ICryptoSessionParams): IPromise<ICertificate>;
+    private executeSession<T>(method, path, data, success?);
     private whenSession<T>(func);
 }
 export interface ICryptoClientOptions {
     /**
+     * Порт коммутатора
+     * @default 48737
+     */
+    defaultPort?: number;
+    /**
      * Порт крипто-сервиса
      * @default 48737
      */
-    port?: number;
+    port?: {
+        value;
+    };
     /**
      * Использовать объекты File API: Blob, File - в результатах методов
      * @default false

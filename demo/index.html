@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>NSD CryptoService Demo</title>
+  <title>NSD CryptoService. Demo.</title>
   <script src="../index.js"></script>
   <script src="index.js"></script>
 </head>
 <body>
+  <section class="title-wrap">
+    <h1>NSD CryptoService. Demo.</h1>
+    <!-- <a class="link" href="/demoUniversal/index.html" target="_blank">Перейти к демо универсального скрипта</a> -->
+  </section>
+  <hr>
   <section class="demo" data-gist="create"></section>
+  <section class="demo" data-gist="version"></section>
   <section class="demo" data-gist="types"></section>
-
+  <section class="demo" data-gist="profiles"></section>  
   <section class="demo" data-gist="open">
     <label>
       <span>#open_type_input</span>
@@ -18,11 +24,33 @@
         <option value="RSA">RSA</option>
       </select>
     </label>
+    <label>
+      <span>#open_profile_select</span>
+      <select id="open_profile_select" 
+              onchange="document.getElementById('open_profile_input').value = this.value;">
+      </select>
+      <input id="open_profile_input" type="text" placeholder="Select or type profile name" />
+    </label>
+    <label>
+      <span>#open_session-id_input</span>
+      <input id="open_session-id_input" type="text" />
+    </label>
   </section>
-
   <section class="demo" data-gist="head"></section>
+  <section class="demo" data-gist="head_for">
+    <label>
+      <span>#head_for_type_input</span>
+      <select id="head_for_type_input">
+        <option value="GOST">GOST</option>
+        <option value="RSA">RSA</option>
+      </select>
+    </label>
+    <label>
+      <span>#head_for_profile_input</span>
+      <input id="head_for_profile_input" type="text" />
+    </label>
+  </section>  
   <section class="demo" data-gist="certs"></section>
-
   <section id="pack" class="demo" data-gist="pack">
     <label>
       <span>#pack_text_input</span>
@@ -30,21 +58,27 @@
     </label>
     <label>
       <span>#pack_cert_input</span>
-      <input id="pack_cert_input" type="text" value="40:40:10:CE:F1:DF:E2:CD:4D:5B:0C:4B:54:33:C7:6B">
+      <input id="pack_cert_input" type="text" value="40:50:14:B0:2D:24:DC:C6:3B:B6:95:05:58:61:04:07">
     </label>
   </section>
-
   <section class="demo" data-gist="unpack">
     <label>
       <span>#unpack_data_input</span>
       <textarea id="unpack_data_input"></textarea>
     </label>
   </section>
-
   <section class="demo" data-gist="sign">
     <label>
       <span>#sign_text_input</span>
-      <input id="sign_text_input" type="text" value="hello">
+      <input id="sign_text_input" type="text">
+    </label>
+    <label>
+      <span>#sign_file_input</span>
+      <input id="sign_file_input" type="file">
+    </label>
+    <label>
+      <span>#sign_detached_signature_input</span>
+      <input id="sign_detached_signature_input" type="file">
     </label>
     <fieldset class="checkbox-group">
       <legend>#sign_opt_</legend>
@@ -66,7 +100,6 @@
       </label>
     </fieldset>
   </section>
-
   <section class="demo" data-gist="close"></section>
 </body>
 </html>
