@@ -1,4 +1,4 @@
-import { ISignatureApplet, IUnpackResult, IPackOptions, IPromise, ICrutchBlob, ICrutchFile, ICertificate, ISignOptions, IVersionInfo, ICryptoProfiles } from './ISignatureApplet';
+import { ISignatureApplet, IUnpackResult, IPackOptions, IPromise, ICrutchBlob, ICrutchFile, ICertificate, ISignOptions, IVersionInfo, ICryptoProfiles, IDecryptOptions, IEncryptOptions } from './ISignatureApplet';
 export declare class CryptoClient implements ISignatureApplet {
     private options;
     private readonly settings;
@@ -39,6 +39,9 @@ export declare class CryptoClient implements ISignatureApplet {
     unpack(buffer: Blob | ICrutchBlob): IPromise<IUnpackResult>;
     getCerts(): IPromise<ICertificate[]>;
     sign(data: Blob | ICrutchBlob, options?: ISignOptions, signature?: Blob | ICrutchBlob): IPromise<Blob | ICrutchBlob>;
+    encrypt(data: Blob | ICrutchBlob, options: IEncryptOptions): IPromise<Blob | ICrutchBlob>;
+    decrypt(data: Blob | ICrutchBlob, options: IDecryptOptions): IPromise<Blob | ICrutchBlob>;
+    importCertificate(data: Blob): IPromise<void>;
     getHeadCert(): IPromise<ICertificate>;
     getHeadCertFor(args: ICryptoSessionParams): IPromise<ICertificate>;
     private executeSession<T>(method, path, data, success?);

@@ -37,6 +37,14 @@ export interface ISignatureApplet {
      * Возвращает сертификат подписи (голову)
      */
     getHeadCert(): IPromise<ICertificate>;
+    /**
+     * Зашифровать данные с возможностью указать получателей
+     */
+    encrypt(data: Blob | ICrutchBlob, options: IEncryptOptions): IPromise<Blob | ICrutchBlob>;
+    /**
+     * Расшифровать данные
+     */
+    decrypt(data: Blob | ICrutchBlob, options: IDecryptOptions): IPromise<Blob | ICrutchBlob>;
 }
 /**
  * Опции формирования CRY-пакета {@link ISignatureApplet#pack}
@@ -84,6 +92,58 @@ export interface ISignOptions {
      * @default false
      */
     sendChain?: boolean;
+}
+/**
+ * Запрос шифрования {@link ISignatureApplet#encrypt}
+ */
+export interface IEncryptRequest {
+    /**
+     * Опции шифрования
+     */
+    options: IEncryptOptions;
+}
+/**
+ * Опции шифрования {@link ISignatureApplet#encrypt}
+ */
+export interface IEncryptOptions {
+    /**
+     * См. документацию по API справочника
+     * @default false
+     */
+    pkcs7?: boolean;
+    /**
+     * См. документацию по API справочника
+     * @default 0 (NO_FLAGS)
+     */
+    flags: number;
+    /**
+     * Список серийных номеров сертификатов получателей
+     */
+    receivers: string[];
+}
+/**
+ * Запрос шифрования {@link ISignatureApplet#decrypt}
+ */
+export interface IDecryptRequest {
+    /**
+     * Опции шифрования
+     */
+    options: IDecryptOptions;
+}
+/**
+ * Опции шифрования {@link ISignatureApplet#encrypt}
+ */
+export interface IDecryptOptions {
+    /**
+     * См. документацию по API справочника
+     * @default false
+     */
+    pkcs7?: boolean;
+    /**
+     * См. документацию по API справочника
+     * @default 0 (NO_FLAGS)
+     */
+    flags: number;
 }
 /**
  * Идентификатор закрытого ключа
